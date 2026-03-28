@@ -1,0 +1,8 @@
+/* ===== GLOBAL BACKDROP STYLES ===== */
+    /* Warm travel-inspired atmosphere with subtle gradients and refined spacing */
+    body { background: radial-gradient(circle at top, #0f2747 0%, #081624 45%, #050b12 100%); }
+    .text-shadow-soft { text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+    .glass-card { backdrop-filter: blur(12px); background: rgba(8, 22, 36, 0.62); }
+    .gold-divider { background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+    .hero-overlay { background: linear-gradient(90deg, rgba(5,11,18,.88) 0%, rgba(5,11,18,.55) 50%, rgba(5,11,18,.25) 100%); }
+    .section-fade { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); }
