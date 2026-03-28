@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+<!-- SEO Meta Tags -->
+<title>AA Kembara Travel &amp; Tours | Umrah, Domestic Tours &amp; International Holidays in Cheras</title>
+<meta name="description" content="Warm, professional travel agency landing page for AA Kembara Travel &amp; Tours in Cheras, Kuala Lumpur, featuring Umrah packages, domestic tours, international holidays, honeymoon packages, corporate travel, visa assistance, and a free quote form." />
+<meta property="og:title" content="AA Kembara Travel &amp; Tours | Umrah, Domestic Tours &amp; International Holidays in Cheras" />
+<meta property="og:description" content="Warm, professional travel agency landing page for AA Kembara Travel &amp; Tours in Cheras, Kuala Lumpur, featuring Umrah packages, domestic tours, international holidays, honeymoon packages, corporate travel, visa assistance, and a free quote form." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AA Kembara Travel &amp; Tours | Umrah, Domestic Tours &amp; International Holidays in Cheras" />
+<meta name="twitter:description" content="Warm, professional travel agency landing page for AA Kembara Travel &amp; Tours in Cheras, Kuala Lumpur, featuring Umrah packages, domestic tours, international holidays, honeymoon packages, corporate travel, visa assistance, and a free quote form." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=2726');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='5NRA7bVhhA';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-slate-100 antialiased">
+  <!-- ============================================================================ -->
+  <!-- HEADER / NAVIGATION: Brand, contact shortcut, and anchored navigation       -->
+  <!-- Features: Sticky top bar, mobile-friendly wrap, clear CTA                   -->
+  <!-- Mobile Padding: px-4 ensures logo and actions never touch viewport edges    -->
+  <!-- ============================================================================ -->
+  <header data-section="header" class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-8 lg:px-12">
+      <div class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-full bg-amber-400 text-slate-950 font-black shadow-lg shadow-amber-400/20">A</div>
+        <div>
+          <p class="text-sm font-semibold tracking-[0.25em] text-amber-300">AA KEMBARA</p>
+          <p class="text-xs text-slate-300">Travel & Tours</p>
+        </div>
+      </div>
+      <nav class="hidden gap-6 text-sm font-medium text-slate-200 md:flex">
+        <a href="#services" class="hover:text-amber-300">Services</a>
+        <a href="#destinations" class="hover:text-amber-300">Destinations</a>
+        <a href="#why-us" class="hover:text-amber-300">Why Us</a>
+        <a href="#contact" class="hover:text-amber-300">Contact</a>
+      </nav>
+      <a href="#contact" class="rounded-full border border-amber-400/60 px-4 py-2 text-sm font-semibold text-amber-200 transition hover:bg-amber-400 hover:text-slate-950">Get a Free Quote</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================================================ -->
+    <!-- HERO SECTION: Main landing area with headline, subtext, and primary CTA     -->
+    <!-- Features: Travel photography backdrop, centered content, responsive layout   -->
+    <!-- Mobile Padding: Ensures headline and CTA never touch viewport edges          -->
+    <!-- ============================================================================ -->
+    <section data-section="hero" class="hero-section relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" alt="Travel ocean destination" class="h-full w-full object-cover opacity-40" />
+        <div class="absolute inset-0 hero-overlay"></div>
+      </div>
+      <div class="relative mx-auto max-w-7xl px-4 py-16 sm:py-20 md:px-8 lg:px-12 lg:py-28">
+        <div class="grid items-center gap-10 lg:grid-cols-2">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center rounded-full border border-amber-300/30 bg-amber-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-amber-200">Cheras, Kuala Lumpur • Trusted Malaysian Travel Specialist</span>
+            <h1 class="mt-5 text-4xl font-black tracking-tight text-white text-shadow-soft sm:text-5xl lg:text-6xl">Your Journey Begins Here</h1>
+            <p class="mt-5 text-base leading-8 text-slate-200 sm:text-lg">
+              From sacred Umrah journeys to unforgettable holidays in Japan, Turkey, Bali, Thailand, and Europe, AA Kembara Travel & Tours crafts smooth, heartfelt travel experiences for Malaysian families, couples, and corporate groups.
+            </p>
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a href="#contact" class="cta-primary inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-400/25 transition hover:scale-[1.02] hover:bg-amber-300">Get a Free Quote</a>
+              <a href="#services" class="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3.5 font-semibold text-white transition hover:border-amber-300 hover:text-amber-200">Explore Services</a>
+            </div>
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+              <div class="glass-card rounded-2xl border border-white/10 p-4">
+                <p class="text-2xl font-bold text-amber-300">MOTAC</p>
+                <p class="mt-1 text-sm text-slate-200">Licensed travel agency</p>
+              </div>
+              <div class="glass-card rounded-2xl border border-white/10 p-4">
+                <p class="text-2xl font-bold text-amber-300">24/7</p>
+                <p class="mt-1 text-sm text-slate-200">Support for your trip</p>
+              </div>
+              <div class="glass-card rounded-2xl border border-white/10 p-4">
+                <p class="text-2xl font-bold text-amber-300">Warm</p>
+                <p class="mt-1 text-sm text-slate-200">Personalised service</p>
+              </div>
+            </div>
+          </div>
+          <div class="lg:justify-self-end">
+            <div class="glass-card overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/30">
+              <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80" alt="Travelers with luggage in an airport" class="h-80 w-full object-cover sm:h-[26rem]" />
+              <div class="p-6">
+                <p class="text-sm uppercase tracking-[0.25em] text-amber-300">A journey tailored for you</p>
+                <p class="mt-2 text-lg font-semibold text-white">Thoughtful planning, fair pricing, and caring guidance from start to finish.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- SERVICES SECTION: Clear service categories with quick scannability           -->
+    <!-- Features: Card grid, travel-oriented icons, concise value statements         -->
+    <!-- Mobile Padding: Spacious section containers and card padding                -->
+    <!-- ============================================================================ -->
+    <section id="services" data-section="services" class="section-fade">
+      <div class="mx-auto max-w-7xl px-4 py-16 md:px-8 lg:px-12">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300">Our Services</p>
+          <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">Everything you need for a smooth, memorable journey</h2>
+          <div class="gold-divider mt-5 h-px w-28"></div>
+        </div>
+        <div class="features-grid mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <article class="glass-card rounded-3xl border border-white/10 p-6">
+            <h3 class="text-xl font-semibold text-amber-300">Umrah & Hajj Packages</h3>
+            <p class="mt-3 leading-7 text-slate-200">Peaceful, well-organised spiritual travel with practical arrangements, reliable guidance, and care for families and first-time pilgrims.</p>
+          </article>
+          <article class="glass-card rounded-3xl border border-white/10 p-6">
+            <h3 class="text-xl font-semibold text-amber-300">Domestic Tour Packages</h3>
+            <p class="mt-3 leading-7 text-slate-200">Discover Malaysia’s islands, highlands, cities, and cultural gems with flexible itineraries for groups, families, and school trips.</p>
+          </article>
+          <article class="glass-card rounded-3xl border border-white/10 p-6">
+            <h3 class="text-xl font-semibold text-amber-300">International Holidays</h3>
+            <p class="mt-3 leading-7 text-slate-200">Handpicked escapes to iconic destinations with clean planning, trusted partners, and enjoyable sightseeing experiences.</p>
+          </article>
+          <article class="glass-card rounded-3xl border border-white/10 p-6">
+            <h3 class="text-xl font-semibold text-amber-300">Honeymoon Packages</h3>
+            <p class="mt-3 leading-7 text-slate-200">Romantic getaways designed for newlyweds who want beautiful memories, privacy, and a stress-free travel plan.</p>
+          </article>
+          <article class="glass-card rounded-3xl border border-white/10 p-6">
+            <h3 class="text-xl font-semibold text-amber-300">Corporate Travel</h3>
+            <p class="mt-3 leading-7 text-slate-200">Efficient travel solutions for teams, incentives, conferences, and business trips with dependable support throughout.</p>
+          </article>
+          <article class="glass-card rounded-3xl border border-white/10 p-6">
+            <h3 class="text-xl font-semibold text-amber-300">Visa Assistance</h3>
+            <p class="mt-3 leading-7 text-slate-200">Guidance on travel documentation and visa preparation so your journey can start with confidence and clarity.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- DESTINATIONS SECTION: Popular routes and inspirations                        -->
+    <!-- Features: Destination chips, imagery, and travel planning appeal             -->
+    <!-- Mobile Padding: Comfortable wrapping layout for small screens                -->
+    <!-- ============================================================================ -->
+    <section id="destinations" data-section="destinations" class="bg-slate-950/40">
+      <div class="mx-auto max-w-7xl px-4 py-16 md:px-8 lg:px-12">
+        <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300">Popular Destinations</p>
+            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">Choose from the world’s most loved escapes</h2>
+            <p class="mt-4 max-w-2xl leading-7 text-slate-200">Whether you’re planning a sacred pilgrimage, a family holiday, or a once-in-a-lifetime vacation, we help you choose the destination that fits your budget, timing, and travel style.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-sm text-amber-100">Makkah</span>
+              <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-sm text-amber-100">Japan</span>
+              <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-sm text-amber-100">Turkey</span>
+              <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-sm text-amber-100">Bali</span>
+              <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-sm text-amber-100">Thailand</span>
+              <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-sm text-amber-100">Europe</span>
+            </div>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="overflow-hidden rounded-3xl border border-white/10">
+              <img src="https://images.unsplash.com/photo-1549693578-d683be217e58?auto=format&fit=crop&w=1000&q=80" alt="Temple and city travel destination" class="h-56 w-full object-cover" />
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-white/10 sm:mt-10">
+              <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1000&q=80" alt="Beautiful international travel scene" class="h-56 w-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- WHY BOOK WITH US SECTION: Trust signals and reassurance                     -->
+    <!-- Features: License, guides, pricing, support, and customer-centric tone      -->
+    <!-- Mobile Padding: Cards stack cleanly on narrow screens                        -->
+    <!-- ============================================================================ -->
+    <section id="why-us" data-section="why-us">
+      <div class="mx-auto max-w-7xl px-4 py-16 md:px-8 lg:px-12">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300">Why Book With Us</p>
+          <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">Reliable travel support with a warm Malaysian touch</h2>
+        </div>
+        <div class="mt-10 grid gap-6 lg:grid-cols-4">
+          <div class="glass-card rounded-3xl border border-white/10 p-6">
+            <p class="text-lg font-semibold text-amber-300">MOTAC licensed</p>
+            <p class="mt-3 text-slate-200">Book with confidence through a recognised and professional agency.</p>
+          </div>
+          <div class="glass-card rounded-3xl border border-white/10 p-6">
+            <p class="text-lg font-semibold text-amber-300">Experienced guides</p>
+            <p class="mt-3 text-slate-200">Receive helpful advice and clear guidance throughout your trip.</p>
+          </div>
+          <div class="glass-card rounded-3xl border border-white/10 p-6">
+            <p class="text-lg font-semibold text-amber-300">Competitive prices</p>
+            <p class="mt-3 text-slate-200">Enjoy value-focused packages designed to suit different budgets.</p>
+          </div>
+          <div class="glass-card rounded-3xl border border-white/10 p-6">
+            <p class="text-lg font-semibold text-amber-300">24/7 support</p>
+            <p class="mt-3 text-slate-200">We are here when you need assistance before, during, and after travel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- TESTIMONIALS SECTION: Social proof and customer confidence                  -->
+    <!-- Features: Short testimonials, warm language, high readability               -->
+    <!-- Mobile Padding: Ensures comfortable spacing and legibility                  -->
+    <!-- ============================================================================ -->
+    <section data-section="testimonials" class="bg-slate-950/40">
+      <div class="mx-auto max-w-7xl px-4 py-16 md:px-8 lg:px-12">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300">Client Experiences</p>
+          <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">Travel plans handled with care and professionalism</h2>
+        </div>
+        <div class="testimonials-carousel mt-10 grid gap-6 lg:grid-cols-3">
+          <blockquote class="glass-card rounded-3xl border border-white/10 p-6">
+            <p class="leading-7 text-slate-200">“Our Umrah arrangement was smooth from start to finish. The team was responsive and very reassuring for our whole family.”</p>
+            <footer class="mt-4 text-sm font-semibold text-amber-300">— Family from Cheras</footer>
+          </blockquote>
+          <blockquote class="glass-card rounded-3xl border border-white/10 p-6">
+            <p class="leading-7 text-slate-200">“We booked a Japan holiday and everything was well planned. Excellent service and helpful recommendations.”</p>
+            <footer class="mt-4 text-sm font-semibold text-amber-300">— Holiday traveller</footer>
+          </blockquote>
+          <blockquote class="glass-card rounded-3xl border border-white/10 p-6">
+            <p class="leading-7 text-slate-200">“Great prices, patient staff, and quick support. It felt easy to plan our group trip with AA Kembara.”</p>
+            <footer class="mt-4 text-sm font-semibold text-amber-300">— Corporate client</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- CONTACT SECTION: Free quote form, address, and action-oriented details      -->
+    <!-- Features: Clear form fields, local address, contact-ready layout             -->
+    <!-- Mobile Padding: px-4 py-6+ with safe field spacing on all screens           -->
+    <!-- ============================================================================ -->
+    <section id="contact" data-section="contact">
+      <div class="mx-auto max-w-7xl px-4 py-16 md:px-8 lg:px-12">
+        <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300">Get in Touch</p>
+            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">Request your free travel quote today</h2>
+            <p class="mt-4 leading-7 text-slate-200">Tell us your travel destination, preferred month, and group size. Our friendly team will recommend the best package for your needs.</p>
+
+            <div class="mt-8 space-y-4 rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div>
+                <p class="text-sm uppercase tracking-[0.25em] text-amber-300">Visit Us</p>
+                <p class="mt-2 text-slate-100">AA Kembara Travel & Tours</p>
+                <p class="text-slate-300">Mezzanine Floor, 24 Jalan Serkut,<br />Taman Pertama, Cheras, 56100 Kuala Lumpur</p>
+              </div>
+              <div>
+                <p class="text-sm uppercase tracking-[0.25em] text-amber-300">Best For</p>
+                <p class="mt-2 text-slate-300">Umrah packages, domestic tours, international holidays, honeymoon trips, corporate travel, and visa assistance.</p>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form glass-card rounded-3xl border border-white/10 p-6 sm:p-8" id="quoteForm">
+            <div class="grid gap-5">
+              <div>
+                <label for="full_name" class="mb-2 block text-sm font-medium text-slate-200">Name</label>
+                <input id="full_name" name="full_name" type="text" required class="w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-amber-300" placeholder="Your full name" />
+              </div>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="phone" class="mb-2 block text-sm font-medium text-slate-200">Phone</label>
+                  <input id="phone" name="phone" type="tel" required class="w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-amber-300" placeholder="e.g. 012-345 6789" />
+                </div>
+                <div>
+                  <label for="travel_month" class="mb-2 block text-sm font-medium text-slate-200">Travel Month</label>
+                  <input id="travel_month" name="travel_month" type="month" class="w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none focus:border-amber-300" />
+                </div>
+              </div>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="destination" class="mb-2 block text-sm font-medium text-slate-200">Destination of Interest</label>
+                  <select id="destination" name="destination" class="w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none focus:border-amber-300">
+                    <option>Makkah</option>
+                    <option>Japan</option>
+                    <option>Turkey</option>
+                    <option>Bali</option>
+                    <option>Thailand</option>
+                    <option>Europe</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="group_size" class="mb-2 block text-sm font-medium text-slate-200">Group Size</label>
+                  <input id="group_size" name="group_size" type="number" min="1" class="w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-amber-300" placeholder="Number of travellers" />
+                </div>
+              </div>
+              <div>
+                <label for="notes" class="mb-2 block text-sm font-medium text-slate-200">Additional Notes</label>
+                <textarea id="notes" name="notes" rows="4" class="w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-amber-300" placeholder="Tell us about your preferred itinerary, budget, or special requests"></textarea>
+              </div>
+              <button type="submit" class="cta-primary rounded-full bg-amber-400 px-6 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-400/25 transition hover:bg-amber-300">Send My Free Quote Request</button>
+              <p class="text-sm leading-6 text-slate-300">A friendly consultant will get back to you with package recommendations and next steps.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================================ -->
+  <!-- FOOTER SECTION: Brand close, address recap, and trust statement              -->
+  <!-- Features: Simple navigation, local presence, copyright                        -->
+  <!-- Mobile Padding: Comfortable spacing and readable hierarchy                  -->
+  <!-- ============================================================================ -->
+  <footer data-section="footer" class="border-t border-white/10 bg-slate-950">
+    <div class="mx-auto max-w-7xl px-4 py-8 md:px-8 lg:px-12">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-sm font-semibold text-amber-300">AA Kembara Travel & Tours</p>
+          <p class="mt-1 text-sm text-slate-400">Mezzanine Floor, 24 Jalan Serkut, Taman Pertama, Cheras, 56100 Kuala Lumpur</p>
+        </div>
+        <p class="text-sm text-slate-500">Your trusted partner for Umrah, tours, and holiday experiences.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
